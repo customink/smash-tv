@@ -16,24 +16,25 @@ function fetchWows(url) {
   });
 }
 
-function addSlides(departments) {
+function clearSlides() {
+  $('.slides section').remove();
+}
+
+function addSlide(wow) {
+  var title = $('<h2>').html("Wow " + wow.target);
+  var p = $('<p>').html(wow.description);
+  var slide = $('<section>').append(title).append(p)
+  $('.slides').append(slide);
+}
+
+function refreshSlides(urls) {
   return new Promise((resolve, reject) => {
-    var promises = departments.map((department) => {
-      var url = `https://circuit.in.customink.com/rss/wows/departments/${department}.xml`;
-      return fetchWows(url);
-    });
+    var promises = urls.map((url) => { return fetchWows(url); });
 
     Promise.all(promises).then(wows => {
-      var merged = [].concat.apply([], wows);
-
-      $('.slides section').remove();
-      merged.forEach((wow) => {
-        var title = $('<h2>').html("Wow " + wow.target);
-        var p = $('<p>').html(wow.description);
-        var slide = $('<section>').append(title).append(p)
-        $('.slides').append(slide);
-      });
-
+      wows = [].concat.apply([], wows);
+      clearSlides();
+      wows.forEach((wow) => { addSlide(wow) })
       resolve();
     })
   })

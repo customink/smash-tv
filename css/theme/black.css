@@ -11,14 +11,14 @@ section.has-light-background, section.has-light-background h1, section.has-light
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #001665;
-  background-color: #001665; }
+  background: #3053CA;
+  background-color: #3053CA; }
 
 .reveal {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-size: 42px;
   font-weight: normal;
-  color: #00a4a3; }
+  color: #fff; }
 
 ::selection {
   color: #00a4a3;
@@ -45,7 +45,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #00a4a3;
+  color: #FFF;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-weight: 600;
   line-height: 1.2;
@@ -85,7 +85,9 @@ body {
 
 .reveal strong,
 .reveal b {
-  font-weight: bold; }
+  font-weight: bold;
+  color: #FFDC1E;
+}
 
 .reveal em {
   font-style: italic; }

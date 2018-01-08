@@ -33,6 +33,7 @@ function refreshSlides(urls) {
 
     Promise.all(promises).then(wows => {
       wows = [].concat.apply([], wows);
+      wows = _.shuffle(wows);
       clearSlides();
       wows.forEach((wow) => { addSlide(wow) })
       resolve();

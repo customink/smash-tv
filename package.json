@@ -1,0 +1,25 @@
+{
+  "name": "smash_tv",
+  "version": "1.0.0",
+  "description": "Wow Dashboard for TV",
+  "main": "index.html",
+  "repository": "git@github.com:customink/smash-tv.git",
+  "author": "Chris Mar <cmar@customink.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "parcel build --public-url ./",
+    "server": "parcel",
+    "deploy": "yarn run clean && yarn run build && mv dist/smash_tv.html dist/index.html && gh-pages -d dist"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "reveal.js": "^3.6.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0",
+    "parcel-bundler": "^1.4.1"
+  }
+}

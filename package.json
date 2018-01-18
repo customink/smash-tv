@@ -7,6 +7,11 @@
   "author": "Chris Mar <cmar@customink.com>",
   "license": "UNLICENSED",
   "private": true,
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "yarn run clean && parcel build index.html",
+    "server": "parcel"
+  },
   "dependencies": {
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",

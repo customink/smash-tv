@@ -1,0 +1,18 @@
+{
+  "name": "smash_tv",
+  "version": "1.0.0",
+  "description": "Wow Dashboard for TV",
+  "main": "index.html",
+  "repository": "git@github.com:customink/smash-tv.git",
+  "author": "Chris Mar <cmar@customink.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "reveal.js": "^3.6.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.4.1"
+  }
+}

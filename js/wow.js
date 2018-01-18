@@ -1,7 +1,10 @@
+import $ from 'jquery';
+import _ from 'lodash';
+
 function fetchWows(url) {
   return new Promise((resolve, reject) => {
     $.get(url, function(data) {
-      $xml = $(data);
+      let $xml = $(data);
       var wows = [];
       $xml.find('item').each((index, element) => {
         var target = $(element).find('targets').find('target');
@@ -27,7 +30,7 @@ function addSlide(wow) {
   $('.slides').append(slide);
 }
 
-function refreshSlides(urls) {
+export default function refreshSlides(urls) {
   return new Promise((resolve, reject) => {
     var promises = urls.map((url) => { return fetchWows(url); });
 

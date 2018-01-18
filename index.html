@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>Wow Board</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
-    <script src="js/reveal.js"></script>
-    <script src="js/wow.js"></script>
-
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
   </head>
   <body>
     <section>
@@ -29,31 +24,5 @@
       </div>
     </div>
 
-
-    <script>
-      Reveal.configure({
-        dependencies: [],
-        progress: false,
-        controls: false,
-        controlsBackArrows: 'hidden',
-        autoSlide: 12000,
-        loop: true
-      });
-
-      var departments = ["164-engineering", "66-operations-technology", "107-web-operations"];
-      var urls = departments.map(department => {
-       return `https://circuit.in.customink.com/rss/wows/departments/${department}.xml`;
-      })
-
-      Reveal.addEventListener('slidechanged', function( event ) {
-        if (Reveal.isLastSlide()) {
-          refreshSlides(urls);
-        }
-      });
-
-     refreshSlides(urls).then(() => {
-       Reveal.initialize();
-     })
-    </script>
   </body>
 </html>

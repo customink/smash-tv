@@ -2,6 +2,12 @@
 
 Smash TV is a slideshow built from an rss feed to display wows on our dashboard
 
+## Usage
+You can define an array of departments in the query parameters with mulitple `d[]`
+
+```bash
+http://customink.com/smash-tv?d[]=1-engineering&d[]=2-sales
+```
 ## Development
 
 We are using [yarn](https://yarnpkg.com/en/) and [parcel.js](https://parceljs.org/) to package the application.

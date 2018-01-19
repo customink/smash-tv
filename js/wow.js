@@ -1,5 +1,15 @@
 import $ from 'jquery';
 import _ from 'lodash';
+import queryString from 'query-string';
+
+function departmentUrls() {
+  const parsed = queryString.parse(location.search, { arrayFormat: 'bracket' });
+  let departments = ["164-engineering", "66-operations-technology", "107-web-operations"];
+  if (!_.isEmpty(parsed.d)) { departments =  parsed.d; }
+  return departments.map(department => {
+    return `https://circuit.in.customink.com/rss/wows/departments/${department}.xml`;
+  })
+}
 
 function fetchWows(url) {
   return new Promise((resolve, reject) => {
@@ -30,7 +40,9 @@ function addSlide(wow) {
   $('.slides').append(slide);
 }
 
-export default function refreshSlides(urls) {
+export default function refreshSlides() {
+  let urls = departmentUrls();
+  console.log(urls);
   return new Promise((resolve, reject) => {
     var promises = urls.map((url) => { return fetchWows(url); });
 

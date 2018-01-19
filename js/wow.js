@@ -4,7 +4,7 @@ import queryString from 'query-string';
 
 function departmentUrls() {
   const parsed = queryString.parse(location.search, { arrayFormat: 'bracket' });
-  let departments = ["164-engineering", "66-operations-technology", "107-web-operations"];
+  let departments = ["164-engineering", "58-software-engineering"];
   if (!_.isEmpty(parsed.d)) { departments =  parsed.d; }
   return departments.map(department => {
     return `https://circuit.in.customink.com/rss/wows/departments/${department}.xml`;

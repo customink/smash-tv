@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "parcel build --public-url ./",
-    "server": "parcel",
+    "start": "parcel",
     "deploy": "yarn run clean && yarn run build && mv dist/smash_tv.html dist/index.html && gh-pages -d dist"
   },
   "dependencies": {

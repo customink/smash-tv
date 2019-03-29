@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import queryString from 'query-string';
+import { decodeHtml } from './util.js';
 
 function departmentUrls() {
   const parsed = queryString.parse(location.search, { arrayFormat: 'bracket' });
@@ -42,20 +43,13 @@ function addSlide(wow) {
   var names = wow.targets.map(function(target){
     return target.name;
   }).join(",");
-  var images = wow.targets.map(function(target){
-    return target.image? $('<img>').attr('src', target.image): false;
+  var images = wow.targets.slice(0, 6).map(function(target){
+    return target.image? $('<img class="inker-image">').attr('src', target.image): false;
   });
-  var title = $('<h2>').html("Wow " + names);
+  var title = $('<h3>').html("Wow " + names);
   var p = $('<p>').html(wow.description);
   var slide = $('<section>').append(images).append(title).append(p)
   $('.slides').append(slide);
-}
-
-function decodeHtml(html) {
-  var parser = new DOMParser;
-  var dom = parser.parseFromString(html, 'text/html')
-  var txt = document.createElement("textarea");
-  return dom.body.textContent;
 }
 
 export default function refreshSlides() {

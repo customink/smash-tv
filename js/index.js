@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Reveal from 'reveal.js';
-import refreshSlides from './wow.js'
+import refreshSlides from './wow.js';
+import { getRndBackgroundColorClass } from './util.js';
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   Reveal.addEventListener('slidechanged', function( event ) {
     if (Reveal.isLastSlide()) { refreshSlides(); } 
+    $('body').toggleClass(getRndBackgroundColorClass());
   });
 
   refreshSlides().then(() => {

@@ -42,7 +42,7 @@ function clearSlides() {
 function addSlide(wow) {
   var names = wow.targets.map(function(target){
     return target.name;
-  }).join(",");
+  }).join(", ");
   var images = wow.targets.slice(0, 6).map(function(target){
     return target.image? $('<img class="inker-image">').attr('src', target.image): false;
   });

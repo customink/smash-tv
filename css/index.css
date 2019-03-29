@@ -1,5 +1,6 @@
 @import './reveal.css';
 @import './rebrand-blue.css';
+@import './background.css';
 
  .ref-NeckLine {
     top: -60px;
@@ -23,4 +24,11 @@
     background-size: 3.125rem 3.125rem;
     height: 3.125rem;
     width: 3.125rem;
+}
+
+.inker-image {
+    height: 16vh;
+    width:auto;
+    border-radius: 10px;
+    margin: 10px !important;
 }

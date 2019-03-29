@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import _ from 'lodash';
 import queryString from 'query-string';
+import { decodeHtml } from './util.js';
 
 function departmentUrls() {
   const parsed = queryString.parse(location.search, { arrayFormat: 'bracket' });
@@ -16,10 +17,16 @@ function fetchWows(url) {
       let $xml = $(data);
       var wows = [];
       $xml.find('item').each((index, element) => {
-        var target = $(element).find('targets').find('target');
+        var targets = [];
+        $(element).find('targets').find('target').each((index, target) => {
+          targets.push({
+            name: $(target).find('name').text(),
+            image: decodeHtml($(target).find('image').text()).trim(),
+          });
+        });
         var description = $(element).find('description').text();
         wows.push({
-          target: target.text(),
+          targets: targets,
           description: description
         })
       });
@@ -33,9 +40,15 @@ function clearSlides() {
 }
 
 function addSlide(wow) {
-  var title = $('<h2>').html("Wow " + wow.target);
+  var names = wow.targets.map(function(target){
+    return target.name;
+  }).join(", ");
+  var images = wow.targets.slice(0, 6).map(function(target){
+    return target.image? $('<img class="inker-image">').attr('src', target.image): false;
+  });
+  var title = $('<h3>').html("Wow " + names);
   var p = $('<p>').html(wow.description);
-  var slide = $('<section>').append(title).append(p)
+  var slide = $('<section>').append(images).append(title).append(p)
   $('.slides').append(slide);
 }
 
